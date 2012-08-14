@@ -7,6 +7,13 @@ struct list {
 };
 typedef struct list list;
 
+void push(list** head, int value) {
+    list* newnode = malloc(sizeof(list));
+    newnode->value = value;
+    newnode->next = *head;
+    *head = newnode;
+}
+
 list* reverseList(list* head, list* previous) {
     list* tail;
     if (head->next == NULL) {
@@ -84,6 +91,7 @@ main() {
 
     addTail(head, 20);
     addTail(head, 21);
+    push(&head, 100);
     printList(head);
 
 
